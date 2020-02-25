@@ -166,8 +166,9 @@ for epoch in range(EPOCHS):
 	for pointer in range(0, pointer_MAX, T_steps+1):
 		inputs = dataset[:, pointer: pointer + T_steps]
 		desired_outputs = data[pointer + 1: pointer + T_steps + 1]
-		epoch_loss += train_step(inputs,desired_outputs)
-		#print ('Pointer {} Loss {:.4f}'.format(pointer, epoch_loss))
+		train_eample_loss = train_step(inputs,desired_outputs)
+		epoch_loss += train_eample_loss
+		print ('Pointer {} Loss {:.4f}'.format(pointer, train_eample_loss))
 	print ('Epoch {} Loss {:.4f}'.format(epoch+1, epoch_loss))
 
 print("done.")
